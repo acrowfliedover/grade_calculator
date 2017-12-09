@@ -2,6 +2,7 @@
 #define GRADE_CALCULATOR_H
 
 #include <QMainWindow>
+#include <QLabel>
 
 namespace Ui {
 class grade_calculator;
