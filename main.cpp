@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
    QApplication app(argc, argv);
    QWidget *window=new QWidget;
    window->setWindowTitle("Calculate Your Grade");
+   window->setFixedSize(250,160);
 
    QVBoxLayout *Grand= new QVBoxLayout;
    QHBoxLayout *Assignments= new QHBoxLayout;
@@ -18,7 +19,7 @@ int main(int argc, char *argv[])
    QHBoxLayout *Project= new QHBoxLayout;
    //setting up the layouts
 
-   QLabel *assignments_label=new QLabel("Assignments");
+   QLabel *assignments_label=new QLabel("Assignments\t");
    QSpinBox *assignments= new QSpinBox;
    QSlider *assignments_slider= new QSlider(Qt::Horizontal);
    assignments->setRange(0,100);
@@ -34,7 +35,7 @@ int main(int argc, char *argv[])
    Grand->addLayout(Assignments);
    //put in the layout
 
-   QLabel *midterm_label=new QLabel("Midterm       ");
+   QLabel *midterm_label=new QLabel("Midterm \t\t");
    QSpinBox *midterm= new QSpinBox;
    QSlider *midterm_slider= new QSlider(Qt::Horizontal);
    midterm->setRange(0,100);
@@ -51,7 +52,7 @@ int main(int argc, char *argv[])
 
    //of course some copy and paste involved...I still think it's easier than making a function...
 
-   QLabel *final_label=new QLabel("Final             ");
+   QLabel *final_label=new QLabel("Final \t\t");
    QSpinBox *final= new QSpinBox;
    QSlider *final_slider= new QSlider(Qt::Horizontal);
    final->setRange(0,100);
@@ -68,7 +69,7 @@ int main(int argc, char *argv[])
 
    //done with final
 
-   QLabel *project_label=new QLabel("Project         ");
+   QLabel *project_label=new QLabel("Project \t\t");
    QSpinBox *project= new QSpinBox;
    QSlider *project_slider= new QSlider(Qt::Horizontal);
    project->setRange(0,100);
@@ -86,10 +87,11 @@ int main(int argc, char *argv[])
 
    QHBoxLayout *score= new QHBoxLayout;
    
-   QLabel *your_score= new QLabel ("Your Score is: ");
+   QLabel *your_score= new QLabel ("Your Score is: \t");
    QSpinBox *display= new QSpinBox;
-   display->setRange(0,100);
-   //QObject::connect(calculate, SIGNAL (clicked()),your_score, SLOT(setScore()) )
+   QObject::connect(assignments, SIGNAL (valueChanged()),display, SLOT(update_overall(int)) );
+   score->addWidget(your_score);
+   score->addWidget(display);
 
    Grand->addWidget(your_score);
    window->setLayout(Grand);

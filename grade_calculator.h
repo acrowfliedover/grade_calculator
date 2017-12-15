@@ -32,11 +32,7 @@ public slots:
 private:
     Ui::grade_calculator *ui;
 };
-template <typename T>
-void fill (std::vector<T> &V);
 
-template <typename T, typename U>
-void connect (std::vector<T> &V, std::vector<U> &W);
 
 
 

@@ -19,7 +19,7 @@ void grade_calculator::update_overall(int unused){
     // double score = 31.4;
     double score = static_cast<double>(unused);
 
-   // ui->label_14->setText(QString::number(score));
+    ui->*this->setValue(this->value());
 
     return;
 }
