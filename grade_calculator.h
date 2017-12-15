@@ -8,6 +8,8 @@
 #include <QSlider>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <vector>
+#include <cmath>
 
 namespace Ui {
 class grade_calculator;
@@ -29,5 +31,12 @@ public slots:
 private:
     Ui::grade_calculator *ui;
 };
+template <typename T>
+void fill (std::vector<T> &V);
+
+template <typename T, typename U>
+void connect (std::vector<T> &V, std::vector<U> &W);
+
+
 
 #endif // GRADE_CALCULATOR_H

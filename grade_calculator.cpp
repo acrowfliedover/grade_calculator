@@ -23,3 +23,11 @@ void grade_calculator::update_overall(int unused){
 
     return;
 }
+
+
+double calculate_final_grade(double assignments=0,double midterm=0,double final=0,double project=0){
+    if (15*assignments+25*midterm+30*final+35*project>15*assignments+50*final+35*project)
+        return 15*assignments+25*midterm+30*final+35*project;
+    else
+        return 15*assignments+50*final+35*project;
+}
