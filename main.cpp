@@ -11,9 +11,7 @@ int main(int argc, char *argv[])
    QWidget *window=new QWidget;
    window->setWindowTitle("Calculate Your Grade");
 
-   QHBoxLayout *grand= new QHBoxLayout;
-   QVBoxLayout *left= new QVBoxLayout;
-   QVBoxLayout *right= new QVBoxLayout;
+   QVBoxLayout *Grand= new QVBoxLayout;
    QHBoxLayout *Assignments= new QHBoxLayout;
    QHBoxLayout *Midterm= new QHBoxLayout;
    QHBoxLayout *Final= new QHBoxLayout;
@@ -33,7 +31,7 @@ int main(int argc, char *argv[])
    Assignments->addWidget(assignments);
    Assignments->addWidget(assignments_slider);
 
-   left->addLayout(Assignments);
+   Grand->addLayout(Assignments);
    //put in the layout
 
    QLabel *midterm_label=new QLabel("Midterm       ");
@@ -49,7 +47,7 @@ int main(int argc, char *argv[])
    Midterm->addWidget(midterm);
    Midterm->addWidget(midterm_slider);
 
-   left->addLayout(Midterm);
+   Grand->addLayout(Midterm);
 
    //of course some copy and paste involved...I still think it's easier than making a function...
 
@@ -66,7 +64,7 @@ int main(int argc, char *argv[])
    Final->addWidget(final);
    Final->addWidget(final_slider);
 
-   left->addLayout(Final);
+   Grand->addLayout(Final);
 
    //done with final
 
@@ -83,10 +81,18 @@ int main(int argc, char *argv[])
    Project->addWidget(project);
    Project->addWidget(project_slider);
 
-   left->addLayout(Project);
+   Grand->addLayout(Project);
 
 
-   window->setLayout(left);
+   QHBoxLayout *score= new QHBoxLayout;
+   
+   QLabel *your_score= new QLabel ("Your Score is: ");
+   QSpinBox *display= new QSpinBox;
+   display->setRange(0,100);
+   //QObject::connect(calculate, SIGNAL (clicked()),your_score, SLOT(setScore()) )
+
+   Grand->addWidget(your_score);
+   window->setLayout(Grand);
 
    window->show();
    return app.exec();

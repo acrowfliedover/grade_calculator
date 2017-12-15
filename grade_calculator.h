@@ -11,6 +11,7 @@
 #include <vector>
 #include <cmath>
 
+
 namespace Ui {
 class grade_calculator;
 }
