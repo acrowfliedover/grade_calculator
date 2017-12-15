@@ -11,20 +11,82 @@ int main(int argc, char *argv[])
    QWidget *window=new QWidget;
    window->setWindowTitle("Calculate Your Grade");
 
-   QSpinBox *HW1= new QSpinBox;
-   QSlider *HW1S= new QSlider(Qt::Horizontal);
-   HW1->setRange(0,100);
-   HW1S->setRange(0,100);
-   QObject::connect(HW1, SIGNAL(valueChanged(int)),HW1S,SLOT(setValue(int)));
-   QObject::connect(HW1S, SIGNAL(valueChanged(int)),HW1,SLOT(setValue(int)));
-   QHBoxLayout *layout1 = new QHBoxLayout;
-   QLabel *HW1L=new QLabel("Homework 1");
-   QVBoxLayout *layout2= new QVBoxLayout;
-   layout1->addWidget(HW1);
-   layout1->addWidget(HW1S);
-   layout2->addWidget(HW1L);
-   layout2->addLayout(layout1);
-   window->setLayout(layout2);
+   QHBoxLayout *grand= new QHBoxLayout;
+   QVBoxLayout *left= new QVBoxLayout;
+   QVBoxLayout *right= new QVBoxLayout;
+   QHBoxLayout *Assignments= new QHBoxLayout;
+   QHBoxLayout *Midterm= new QHBoxLayout;
+   QHBoxLayout *Final= new QHBoxLayout;
+   QHBoxLayout *Project= new QHBoxLayout;
+   //setting up the layouts
+
+   QLabel *assignments_label=new QLabel("Assignments");
+   QSpinBox *assignments= new QSpinBox;
+   QSlider *assignments_slider= new QSlider(Qt::Horizontal);
+   assignments->setRange(0,100);
+   assignments_slider->setRange(0,100);
+   QObject::connect(assignments, SIGNAL(valueChanged(int)),assignments_slider,SLOT(setValue(int)));
+   QObject::connect(assignments_slider, SIGNAL(valueChanged(int)),assignments,SLOT(setValue(int)));
+   //for assignments
+
+   Assignments->addWidget(assignments_label);
+   Assignments->addWidget(assignments);
+   Assignments->addWidget(assignments_slider);
+
+   left->addLayout(Assignments);
+   //put in the layout
+
+   QLabel *midterm_label=new QLabel("Midterm       ");
+   QSpinBox *midterm= new QSpinBox;
+   QSlider *midterm_slider= new QSlider(Qt::Horizontal);
+   midterm->setRange(0,100);
+   midterm_slider->setRange(0,100);
+   QObject::connect(midterm, SIGNAL(valueChanged(int)),midterm_slider,SLOT(setValue(int)));
+   QObject::connect(midterm_slider, SIGNAL(valueChanged(int)),midterm,SLOT(setValue(int)));
+   //for midterm
+
+   Midterm->addWidget(midterm_label);
+   Midterm->addWidget(midterm);
+   Midterm->addWidget(midterm_slider);
+
+   left->addLayout(Midterm);
+
+   //of course some copy and paste involved...I still think it's easier than making a function...
+
+   QLabel *final_label=new QLabel("Final             ");
+   QSpinBox *final= new QSpinBox;
+   QSlider *final_slider= new QSlider(Qt::Horizontal);
+   final->setRange(0,100);
+   final_slider->setRange(0,100);
+   QObject::connect(final, SIGNAL(valueChanged(int)),final_slider,SLOT(setValue(int)));
+   QObject::connect(final_slider, SIGNAL(valueChanged(int)),final,SLOT(setValue(int)));
+   //for final
+
+   Final->addWidget(final_label);
+   Final->addWidget(final);
+   Final->addWidget(final_slider);
+
+   left->addLayout(Final);
+
+   //done with final
+
+   QLabel *project_label=new QLabel("Project         ");
+   QSpinBox *project= new QSpinBox;
+   QSlider *project_slider= new QSlider(Qt::Horizontal);
+   project->setRange(0,100);
+   project_slider->setRange(0,100);
+   QObject::connect(project, SIGNAL(valueChanged(int)),project_slider,SLOT(setValue(int)));
+   QObject::connect(project_slider, SIGNAL(valueChanged(int)),project,SLOT(setValue(int)));
+   //for project
+
+   Project->addWidget(project_label);
+   Project->addWidget(project);
+   Project->addWidget(project_slider);
+
+   left->addLayout(Project);
+
+
+   window->setLayout(left);
 
    window->show();
    return app.exec();
